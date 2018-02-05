@@ -226,27 +226,32 @@ console.log(evenOdd([2, 2, 2])); //→ [2, 2, 2]
 
 
 //14.
-function fizzBuzz(num) {
+function fizzBuzz(num1,num2) {
+  var array1 = [];
+  for(var i = num1; i < num2; i++) {
+    array1.push(i);
+  }
+
   var mul3 = "Fizz";
   var mul5 = "Buzz";
   var mul15 = "Fizz Buzz";
-  for (var i = 0; i < num.length; i++) {
-    if(num[i] % 3 == 0) {
-      num[i] = mul3
+  for (var i = 0; i < array1.length; i++) {
+    if(array1[i] % 3 == 0 && array1[i] % 5 == 0) {
+        array1[i] = mul15
     }
-    else if (num[i] % 5 == 0) {
-      num[i] = mul5
+    else if (array1[i] % 5 == 0) {
+      array1[i] = mul5
     }
-    else if (num[i] % 3 == 0 && num[i] % 5 == 0){
-      num[i] = mul15
+    else if (array1[i] % 3 == 0){
+      array1[i] = mul3
     }
   }
-  return num;
+  return array1;
 }
 
 console.log(fizzBuzz(1,6)); //→ ["1", "2", "Fizz", "4", "Buzz"]
-// console.log(fizzBuzz(1, 8)); //→ ["1", "2", "Fizz", "4", "Buzz", "Fizz", "7"]
-// console.log(fizzBuzz(1, 11)); //→ ["1", "2", "Fizz", "4", "Buzz", "Fizz", "7", "8", "Fizz", "Buzz"]
+console.log(fizzBuzz(1,8)); //→ ["1", "2", "Fizz", "4", "Buzz", "Fizz", "7"]
+console.log(fizzBuzz(1,11)); //→ ["1", "2", "Fizz", "4", "Buzz", "Fizz", "7", "8", "Fizz", "Buzz"]
 
 // 15.
 
