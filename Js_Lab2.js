@@ -85,24 +85,26 @@ console.log(swapEnds([1, 2, 3]));
 console.log(swapEnds([8, 6, 7, 9, 5]));
 
 
-// 7. We'll say that a 1 immediately followed by a 3 in an array is an "unlucky" 1. Return true if the given array contains an unlucky 1 in the first 2 or last 2 positions in the array.
+//復習 7. We'll say that a 1 immediately followed by a 3 in an array is an "unlucky" 1. Return true if the given array contains an unlucky 1 in the first 2 or last 2 positions in the array.
 
 function unlucky1(arr) {
-  if (arr[0] === 1 && arr[1] === 3) {
+  if (arr[0] == 1 && arr[1] == 3) {
     return true;
   }
-  else if (arr[1] === 1 && arr[2] === 3){
+  else if (arr.length >= 3 && arr[1] == 1 && arr[2] == 3){
     return true;
   }
-  else {
-    return false;
-  }
+  else if (arr[arr.length-2] == 1 && arr[arr.length-1] == 3){
 
+  }
+return false;
 }
    console.log(unlucky1([1, 3, 4, 5]));  // true
 console.log(unlucky1([2, 1, 3, 4, 5])); //true
 console.log(unlucky1([1, 1, 1]));  //false
 
+
+//復習 Question 8
 
 function front11(arr1,arr2){
   var list = [];
@@ -126,21 +128,41 @@ console.log(front11([1, 2, 3], [7, 9, 8])); //→ [1, 7]
 console.log(front11([1], [2])); // → [1, 2]
 console.log(front11([1, 7], [])); //→ [1]
 
+// 別バージョン
+function front11(arr1, arr2) {
+	// [], []
+	if (arr1.length == 0 && arr2.length == 0) {
+		return [];
+	}
+	// [x, x, ...], []
+	else if (arr1.length > 0 && arr2.length == 0) {
+		return [arr1[0]];
+	}
+	// [], [x, x, ...]
+	else if (arr1.length == 0 && arr2.length > 0) {
+		return [arr2[0]];
+	}
+	// [x, x, ...], [x, x, ...]
+	else if (arr1.length > 0 && arr2.length > 0) {
+		return [arr1[0], arr2[0]];
+	}
+}
+
 
 // 9. We'll say that a value is "everywhere" in an array if for every pair of adjacent elements in the array, at least one of the pair is that value. Return true if the given value is everywhere in the array.
 
-// ======
+//復習 ======
 
 function isEverywhere(arr,value) {
-  for (var i = 0; i < arr.length; i++){
-    if(arr[i] !== value && arr[i + 1] !== value) {
+  for (var i = 0; i < arr.length-1; i++){
+    if(arr[i] != value && arr[i + 1] != value) {
       return false;
     }
     else {
-      return true;
+
     }
   }
-
+return true;
 }
 
 console.log(isEverywhere([1, 2, 1, 3], 1));
@@ -148,15 +170,15 @@ console.log(isEverywhere([1, 2, 1, 3], 2));
 console.log(isEverywhere([1, 2, 1, 3, 4], 1));
 
 
-// 10. For each multiple of 10 in the given array, change all the values following it to be that multiple of 10, until encountering another multiple of 10. So {2, 10, 3, 4, 20, 5} yields {2, 10, 10, 10, 20, 20}.   
+//復習 10. For each multiple of 10 in the given array, change all the values following it to be that multiple of 10, until encountering another multiple of 10. So {2, 10, 3, 4, 20, 5} yields {2, 10, 10, 10, 20, 20}.   
 function tenRun(arr){
-  var mult10 = 0;
+  var mult10 = 2;
   for(var i = 0; i < arr.length; i++){
     if(arr[i] % 10 == 0){
-      mult10 = arr[i]
+      mult10 = arr[i];
     }
     else if (arr[i] % 10 !== 0){
-      arr[i] = mult10
+      arr[i] = mult10;
     }
   }
   return arr;
@@ -166,21 +188,23 @@ console.log(tenRun([2, 10, 3, 4, 20, 5])); //→ [2, 10, 10, 10, 20, 20] 
 console.log(tenRun([10, 1, 20, 2]));//→ [10, 10, 20, 20] 
 console.log(tenRun([10, 1, 9, 20])); //→ [10, 10, 10, 20]
 
-// 11. Given an array of ints, return true if every 2 that appears in the array is next to another 2.
+// 復習　11. Given an array of ints, return true if every 2 that appears in the array is next to another 2.
 
-function twoTwo(num){
-  for (var i = 0; i < num.length; i++) {
-    if (num[i] == 2 && num[i + 1] == 2 && num[i - 1] == 2){
-
-    }
-    else if(num[i + 1] == 2 && num[i - 1] == 2) {
-      return true;
-
-    }
-    else {
-      return false;
-    }
-  }
+function twoTwo(arr) {
+	if (arr.length == 1 && arr[0] == 2) {
+		return false;
+	}
+	// edge case [2, x, ...]
+	if (arr.length > 1 && (arr[0] == 2 && arr[1] != 2)){
+		return false;
+	}
+	// [x!=2, 2, y!=2]
+	for(var i = 1; i < arr.length - 1; i++) {
+		if (arr[i] == 2 && arr[i+1] != 2 && arr[i-1] != 2) {
+			return false;
+		}
+	}
+	return true;
 }
 console.log(twoTwo([4, 2, 2, 3]));//→ true
 console.log(twoTwo([2, 2, 4])); //→ true
@@ -199,25 +223,20 @@ console.log(shiftLeft([6, 2, 5, 3])); //→ [2, 5, 3, 6]
 console.log(shiftLeft([1, 2])); //→ [2, 1]
 console.log(shiftLeft([1])); //→ [1]
 
-// 13
+// 復習　13
 function evenOdd(num) {
   var listeven=[];
   var listodd=[];
-  var newArr;
 
   for(var i = 0; i < num.length; i++){
     if (num[i] % 2 == 0){
       listeven.push(num[i]);
     }
-    else if(num[i] % 2 !== 0) {
+    else if (num[i] % 2 !== 0) {
     listodd.push(num[i]);
-    newArr = listeven.concat(listodd);
-  }
-  else {
-    return num;
   }
 }
-return newArr;
+return listeven.concat(listodd);
 }
 
 console.log(evenOdd([1, 0, 1, 0, 0, 1, 1])); //→ [0, 0, 0, 1, 1, 1, 1]
@@ -225,7 +244,7 @@ console.log(evenOdd([3, 3, 2])); //→ [2, 3, 3]
 console.log(evenOdd([2, 2, 2])); //→ [2, 2, 2]
 
 
-//14.
+//復習　14.
 function fizzBuzz(num1,num2) {
   var array1 = [];
   for(var i = num1; i < num2; i++) {
@@ -237,13 +256,13 @@ function fizzBuzz(num1,num2) {
   var mul15 = "Fizz Buzz";
   for (var i = 0; i < array1.length; i++) {
     if(array1[i] % 3 == 0 && array1[i] % 5 == 0) {
-        array1[i] = mul15
+        array1[i] = mul15;
     }
     else if (array1[i] % 5 == 0) {
-      array1[i] = mul5
+      array1[i] = mul5;
     }
     else if (array1[i] % 3 == 0){
-      array1[i] = mul3
+      array1[i] = mul3;
     }
   }
   return array1;
@@ -253,7 +272,7 @@ console.log(fizzBuzz(1,6)); //→ ["1", "2", "Fizz", "4", "Buzz"]
 console.log(fizzBuzz(1,8)); //→ ["1", "2", "Fizz", "4", "Buzz", "Fizz", "7"]
 console.log(fizzBuzz(1,11)); //→ ["1", "2", "Fizz", "4", "Buzz", "Fizz", "7", "8", "Fizz", "Buzz"]
 
-// 15.
+// 復習　15.
 
 function countClumps(arr) {
   var count = 0;
@@ -268,3 +287,24 @@ function countClumps(arr) {
 console.log(countClumps([1, 2, 2, 3, 4, 4])); //→ 2
 console.log(countClumps([1, 1, 2, 1, 1])); //→ 2
 console.log(countClumps([1, 1, 1, 1, 1])); //→ 1
+
+// 答え
+function countClumps(arr) {
+	// [1, 2, 2, 3, 4, 4] -> 2
+	// [1, 1, 2, 1, 1] -> 2
+	// [1, 1, 1, 1, 1] -> 1
+	var count = 0;
+	var isClump = false;
+
+	for(var i = 0; i < arr.length - 1; i++){
+		if (isClump) {
+			if (arr[i] != arr[i+1]) {
+				isClump = false;
+			}
+		} else if (arr[i] == arr[i+1]) {
+			isClump = true;
+			count++;
+		}
+	}
+	return count;
+}
