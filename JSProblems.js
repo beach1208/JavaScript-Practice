@@ -33,3 +33,22 @@ function factorialRecursion(num) {
 	}
 }
 console.log(factorialRecursion(5));
+
+
+
+//Repeat String
+function repeatStr(str,num){
+	var repeat = "";
+	for (var i = 1; i <= num; i++) {
+		repeat = repeat.concat(str);
+	}
+
+}
+console.log(repeatStr("hi",5));
+
+
+function repeatStr2(str,num){
+	str.repeat(num);
+	
+}
+console.log(repeatStr2("hi",5));
