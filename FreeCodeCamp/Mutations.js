@@ -1,10 +1,8 @@
 function mutation(arr) {
-  for (let i = 0; i < arr.length; i++) {
-    arr[i].toLowerCase();
-  }
-  console.log(array);
+  let firstArray = arr[0].toLowerCase();
+  let secondArray = arr[1].toLowerCase();
 
-  return arr[0].includes(arr[1]);
+  return [...secondArray].every(letter => firstArray.includes(letter));
 }
 
-console.log(mutation(["hello", "hey"]));
+console.log(mutation(["Alien", "line"]));
