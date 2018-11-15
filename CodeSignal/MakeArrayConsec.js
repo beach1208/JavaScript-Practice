@@ -8,7 +8,6 @@ function makeArrayConsecutive2(statues) {
     count += sortArray[i + 1] - sortArray[i] - 1;
   }
 
-  //   let max = Math.max(...sortArray);
   return count;
 }
 console.log(makeArrayConsecutive2([6, 2, 3, 8]));
