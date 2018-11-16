@@ -30,3 +30,16 @@ Array.from(books).forEach(book => {
 const bookList = document.querySelector("#book-list");
 // bookList.innerHTML = "<h2>Books and more books...</h2>";
 bookList.innerHTML += "<p>This is how you add HTML</p>";
+
+//what is node?
+const banner = document.querySelector("#page-banner");
+console.log("#page-banner node type is", banner.nodeType);
+console.log("#page-banner node name is", banner.nodeName);
+console.log("#page-banner node has childNode", banner.hasChildNodes()); //return true or false
+
+//clone node
+const clonedBanner = banner.cloneNode(true);
+//returns all elements inside page-banner elements
+console.log(clonedBanner);
+
+//clone node and insert
