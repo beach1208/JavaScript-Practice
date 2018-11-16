@@ -42,4 +42,23 @@ const clonedBanner = banner.cloneNode(true);
 //returns all elements inside page-banner elements
 console.log(clonedBanner);
 
-//clone node and insert
+//parentnode
+const bookList2 = document.querySelector("#book-list");
+console.log("the parent node is:", bookList2.parentNode);
+//get parent of parent
+console.log("the parent element is:", bookList2.parentElement.parentElement);
+console.log(bookList2.children);
+
+//get sibling node
+const bookList3 = document.querySelector("#book-list");
+console.log("book-list next sibling is", bookList.nextSibling);
+console.log("book-list next element sibling is", bookList.nextElementSibling);
+
+console.log("book-list next previous sibling is", bookList.previousSibling);
+console.log(
+  "book-list next previous element sibling is",
+  bookList.previousElementSibling
+);
+
+bookList.previousElementSibling.querySelector("p").innerHTML +=
+  "<br/>Too cool for everyone";
