@@ -8,3 +8,8 @@ function descendingOrder(n){
 }
 
 console.log(descendingOrder(21445));
+
+
+function descendingOrder(n){
+  return parseInt(String(n).split('').sort().reverse().join(''))
+}
