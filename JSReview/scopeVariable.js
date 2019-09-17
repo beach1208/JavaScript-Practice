@@ -20,7 +20,6 @@ function foo() {
     console.log(a);
 }
 
-
 function bar() {
     a = 3;
     console.log(a);
@@ -29,3 +28,7 @@ function bar() {
 foo();
 bar();
 console.log(a);
+// 2,3,3 a = 3 overwrite let a = 1
+// let a = 3 exists only in bar(). 
+//  if let a = 3, result = 2,3,1
+
