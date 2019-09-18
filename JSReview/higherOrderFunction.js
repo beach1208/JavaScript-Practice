@@ -1,7 +1,14 @@
 //Higher order functions take functions as arguments
 //or return functions
 
-
+const animals = [
+    { name: 'Caro', species: 'rabbit'},
+    { name: 'John', species: 'dog'},
+    { name: 'Mew', species: 'dog'},
+    { name: 'Jimmy', species: 'cat'},
+    { name: 'Harold', species: 'cat'},
+    { name: 'Ursula', species: 'fish'},
+]
 //map
 
 function map(arr, fn) {
@@ -18,6 +25,9 @@ const doubled = map([1, 2, 3], function (a) {
 console.log(doubled);
 
 // => [2,4,6]
+
+const names = animals.map(animal => animal.name);
+console.log(names);
 
 //filter
 
@@ -52,3 +62,17 @@ function sum(a, b) {
 
 const sumArray = reduce([1, 2, 3, 4, 5], sum, 0);
 console.log(sumArray);
+
+const orders = [
+    { amount: 250},
+    { amount: 400},
+    { amount: 100},
+    { amount: 325},
+]
+
+const totalAmount = orders.reduce((sum,order) => {
+    console.log("hello", sum, order);
+    return sum + order.amount;
+},0)
+
+console.log(totalAmount);
